@@ -1,14 +1,13 @@
-package com.prueba.gestionriesgos.domain.model;
+package com.prueba.gestionriesgos.domain.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
+
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
+import java.util.List;
 
 /**
  * Represents a Person.
@@ -30,23 +29,32 @@ public class Person {
     private Integer personId;
 
     /**
-     * The last name of the person.
+     * The name of the person.
      */
     @NonNull
-    @Column(name = "last_name", nullable = false, length = 50)
+    @Size(min = 1, max = 150, message = "First name must be between 1 and 150 characters")
+    @Column(name = "last_name")
     private String firstName;
 
     /**
      * The age of the person.
      */
     @NonNull
-    @Column(name = "age", nullable = false)
+    @Min(value = 0, message = "Age must be a greater than or equal to 0")
+    @Column(name = "age")
     private Integer age;
 
     /**
      * The occupation of the person.
      */
     @NonNull
-    @Column(name = "occupation", nullable = false, length = 50)
+    @Size(min = 1, max = 150, message = "Occupation must be between 1 and 150 characters")
+    @Column(name = "occupation")
     private String occupation;
+
+    /**
+     * A list of places associated with the person.
+     */
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
+    private List<Place> places;
 }
