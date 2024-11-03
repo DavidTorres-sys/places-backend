@@ -1,0 +1,36 @@
+services:
+  backend:
+    image: backend_service
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    env_file:
+      - .env.docker
+    volumes:
+      - ./logs:/app/logs
+
+  db:
+    image: postgres:16.4
+    ports:
+      - "5432:5432"
+    volumes:
+      - data-db:/var/lib/postgresql/data
+      - ../sql/schema.sql:/docker-entrypoint-initdb.d/init.sql
+    env_file:
+      - .env.docker
+
+  pgadmin:
+    image: dpage/pgadmin4
+    ports:
+      - "5050:80"
+    depends_on:
+      - db
+    env_file:
+      - .env.docker
+
+volumes:
+  data-db:
