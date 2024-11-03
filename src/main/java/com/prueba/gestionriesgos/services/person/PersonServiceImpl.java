@@ -44,10 +44,6 @@ public class PersonServiceImpl implements IPersonService {
     @Override
     public PersonDTO createPerson(PersonDTO personDTO) {
         Person person = personMapper.toEntity(personDTO);
-        Optional<Person> existingPerson = personRepository.findById(Math.toIntExact(person.getPersonId()));
-        if (existingPerson.isPresent()) {
-            throw new DataDuplicatedException("Person id already exists");
-        }
         try {
             person = personRepository.save(person);
         } catch (DataIntegrityViolationException e) {

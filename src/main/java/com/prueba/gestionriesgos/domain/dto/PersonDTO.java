@@ -16,12 +16,6 @@ import javax.validation.constraints.Size;
 public class PersonDTO {
 
     /**
-     * The unique identifier for the person.
-     * This serves as the primary key to uniquely identify a person in the database.
-     */
-    private Long personId;
-
-    /**
      * The first name of the person.
      * This field holds the first name of the individual.
      */

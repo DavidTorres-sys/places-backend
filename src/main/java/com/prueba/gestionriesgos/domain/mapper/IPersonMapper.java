@@ -22,6 +22,5 @@ public interface IPersonMapper extends IEntityMapper<PersonDTO, Person> {
      * @param person the Person entity to convert
      * @return the converted PersonDTO
      */
-    @Mapping(target = "personId", source = "person.personId")
     PersonDTO toDTO(Person person);
 }
