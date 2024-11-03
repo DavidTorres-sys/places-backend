@@ -26,7 +26,7 @@ public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "person_id")
-    private Integer personId;
+    private Long personId;
 
     /**
      * The name of the person.

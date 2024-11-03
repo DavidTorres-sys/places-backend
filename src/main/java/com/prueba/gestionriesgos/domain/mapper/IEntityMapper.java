@@ -12,7 +12,7 @@ import java.util.Set;
  * interface will provide the actual mapping logic.
  *
  * @param <D>   the type of the Data Transfer Object
- * @param <Entity> the type of the Entity
+ * @param <E> the type of the Entity
  */
 public interface IEntityMapper<D, E> {
 

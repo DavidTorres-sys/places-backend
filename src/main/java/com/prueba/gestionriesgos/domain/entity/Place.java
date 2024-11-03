@@ -31,7 +31,7 @@ public class Place {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "place_id")
-    private Integer placecId;
+    private Long placeId;
 
     /**
      * The name of the place.

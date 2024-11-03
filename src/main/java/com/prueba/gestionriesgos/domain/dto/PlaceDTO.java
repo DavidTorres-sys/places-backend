@@ -1,6 +1,8 @@
 package com.prueba.gestionriesgos.domain.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.Size;
 import java.util.List;
@@ -13,13 +15,15 @@ import java.util.List;
  * the necessary fields for data representation.
  */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class PlaceDTO {
 
     /**
      * The unique identifier for the place.
      * This is the primary key used to identify the place in the database.
      */
-    private Integer placeId;
+    private Long placeId;
 
     /**
      * The name of the place.
@@ -37,16 +41,14 @@ public class PlaceDTO {
     private String country;
 
     /**
-     * The city where the place is situated.
-     * This field specifies the city corresponding to the place.
+     * The state where the place is situated.
+     * This field specifies the state corresponding to the place.
      */
     @Size(min = 1, max = 150)
-    private String city;
+    private String state;
 
     /**
-     * A list of persons associated with the place.
-     * This field contains a collection of PersonDTO objects,
-     * representing individuals who are linked to or visited the place.
+     * Id of the person associated with the place.
      */
-    private List<PersonDTO> person;
+    private Long personId;
 }
