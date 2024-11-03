@@ -11,10 +11,10 @@ import java.util.Set;
  * between different layers of the application. Implementations of this
  * interface will provide the actual mapping logic.
  *
- * @param <DTO>   the type of the Data Transfer Object
+ * @param <D>   the type of the Data Transfer Object
  * @param <Entity> the type of the Entity
  */
-public interface IEntityMapper<DTO, Entity> {
+public interface IEntityMapper<D, E> {
 
     /**
      * Converts an entity to its corresponding DTO.
@@ -22,7 +22,7 @@ public interface IEntityMapper<DTO, Entity> {
      * @param entity the entity to convert
      * @return the converted DTO
      */
-    DTO toDTO(Entity entity);
+    D toDTO(E entity);
 
     /**
      * Converts a DTO to its corresponding entity.
@@ -30,7 +30,7 @@ public interface IEntityMapper<DTO, Entity> {
      * @param dto the DTO to convert
      * @return the converted entity
      */
-    Entity toEntity(DTO dto);
+    E toEntity(D dto);
 
     /**
      * Converts a list of DTOs to a list of entities.
@@ -38,7 +38,7 @@ public interface IEntityMapper<DTO, Entity> {
      * @param dtoList the list of DTOs to convert
      * @return the list of converted entities
      */
-    List<Entity> toEntity(List<DTO> dtoList);
+    List<E> toEntity(List<D> dtoList);
 
     /**
      * Converts a list of entities to a list of DTOs.
@@ -46,7 +46,7 @@ public interface IEntityMapper<DTO, Entity> {
      * @param entityList the list of entities to convert
      * @return the list of converted DTOs
      */
-    List<DTO> toDto(List<Entity> entityList);
+    List<D> toDTO(List<E> entityList);
 
     /**
      * Converts a set of DTOs to a set of entities.
@@ -54,7 +54,7 @@ public interface IEntityMapper<DTO, Entity> {
      * @param dtoList the set of DTOs to convert
      * @return the set of converted entities
      */
-    Set<Entity> toEntity(Set<DTO> dtoList);
+    Set<E> toEntity(Set<D> dtoList);
 
     /**
      * Converts a set of entities to a set of DTOs.
@@ -62,5 +62,5 @@ public interface IEntityMapper<DTO, Entity> {
      * @param entityList the set of entities to convert
      * @return the set of converted DTOs
      */
-    Set<DTO> toDto(Set<Entity> entityList);
+    Set<D> toDTO(Set<E> entityList);
 }
