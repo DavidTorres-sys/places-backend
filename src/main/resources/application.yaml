@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: gestionriesgos
+  datasource:
+    url: jdbc:postgresql://db:5432/db
+    username: david
+    password: password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        order_inserts: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+backend-api:
+  openapi:
+    dev-url: http://localhost:8080/
+server:
+  port: 8080
+logging:
+  level:
+    root: DEBUG
+    org.springframework: DEBUG
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  metrics:
+    tags:
+      application: "CheckinApplication"
+
+springdoc:
+  packages-to-scan: "package1, package2, com.sitas.checkin"
+  paths-to-match: "/v1, /api/balance/**, *, **, /*, /**"
