@@ -1,8 +1,13 @@
 package com.prueba.gestionriesgos.services.person;
 
 import com.prueba.gestionriesgos.domain.dto.PersonDTO;
+import com.prueba.gestionriesgos.domain.entity.Person;
+import com.prueba.gestionriesgos.domain.mapper.IPersonMapper;
 import com.prueba.gestionriesgos.persistance.IPersonRepository;
+import com.prueba.gestionriesgos.utils.exception.BusinessException;
+import com.prueba.gestionriesgos.utils.exception.DataBaseException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,21 +25,30 @@ import java.util.Optional;
 public class PersonServiceImpl implements IPersonService {
 
     private final IPersonRepository personRepository;
+    private final IPersonMapper personMapper;
 
     @Autowired
-    public PersonServiceImpl(IPersonRepository personRepository) {
+    public PersonServiceImpl(IPersonRepository personRepository,
+                             IPersonMapper personMapper) {
         this.personRepository = personRepository;
+        this.personMapper = personMapper;
     }
 
     /**
      * Creates a new person with the given details.
      *
-     * @param person The PersonDTO containing the details of the person to create.
+     * @param personDTO The PersonDTO containing the details of the person to create.
      * @return The created PersonDTO with the generated ID.
      */
     @Override
-    public PersonDTO createPerson(PersonDTO person) {
-        return null;
+    public PersonDTO createPerson(PersonDTO personDTO) {
+        Person person = personMapper.toEntity(personDTO);
+        try {
+          person = personRepository.save(person);
+        } catch (DataIntegrityViolationException e) {
+            throw new DataBaseException("Error while creating the register", "error.person.duplicate");
+        }
+        return personMapper.toDTO(person);
     }
 
     /**
