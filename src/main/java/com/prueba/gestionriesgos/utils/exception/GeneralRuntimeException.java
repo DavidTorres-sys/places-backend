@@ -16,19 +16,20 @@ public class GeneralRuntimeException extends RuntimeException {
     private static final long serialVersionUID = 1L;
 
     private final String message;
-    private String translationKey;
+    private final String translationKey; // Make translationKey final
 
 
     public GeneralRuntimeException(String message) {
         super(message);
         this.message = message;
+        this.translationKey = null;
     }
 
     public GeneralRuntimeException(String message, Throwable throwable) {
         super(message, throwable);
         this.message = message;
+        this.translationKey = null;
     }
-
 
     public GeneralRuntimeException(String message, String translationKey) {
         super(message);
