@@ -1,13 +1,21 @@
 package com.prueba.gestionriesgos.utils.exception;
 
+import lombok.Getter;
+import lombok.Setter;
+
+import java.io.Serial;
+
 /**
  * Generic abstract exception created to identify all Exceptions.
  */
+@Getter
+@Setter
 public class GeneralRuntimeException extends RuntimeException {
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
-    private String message;
+    private final String message;
     private String translationKey;
 
 
@@ -28,16 +36,4 @@ public class GeneralRuntimeException extends RuntimeException {
         this.translationKey = translationKey;
     }
 
-
-    public String getTranslationKey() {
-        return translationKey;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
 }
