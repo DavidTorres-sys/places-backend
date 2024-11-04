@@ -3,7 +3,6 @@ package com.prueba.gestionriesgos.domain.mapper;
 import com.prueba.gestionriesgos.domain.dto.PersonDTO;
 import com.prueba.gestionriesgos.domain.entity.Person;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 
 /**
  * Mapper interface for converting between Person entities and PersonDTOs.
@@ -14,13 +13,4 @@ import org.mapstruct.Mapping;
  * mappings.
  */
 @Mapper(componentModel = "spring")
-public interface IPersonMapper extends IEntityMapper<PersonDTO, Person> {
-
-    /**
-     * Converts a Person entity to its corresponding PersonDTO.
-     *
-     * @param person the Person entity to convert
-     * @return the converted PersonDTO
-     */
-    PersonDTO toDTO(Person person);
-}
+public interface IPersonMapper extends IEntityMapper<PersonDTO, Person> { }

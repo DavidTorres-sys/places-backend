@@ -18,11 +18,6 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 public class PlaceDTO {
 
-    /**
-     * The unique identifier for the place.
-     * This is the primary key used to identify the place in the database.
-     */
-    private Long placeId;
 
     /**
      * The name of the place.

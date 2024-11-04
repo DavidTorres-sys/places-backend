@@ -35,4 +35,5 @@ public class PersonDTO {
      */
     @Size(min = 1, max = 150)
     private String occupation;
+
 }

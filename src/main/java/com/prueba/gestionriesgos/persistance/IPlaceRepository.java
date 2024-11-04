@@ -9,6 +9,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * This interface extends JpaRepository, providing CRUD operations
  * and additional methods for interacting with Place entities stored
  * in the database. The generic parameters specify the type of the
- * entity (Place) and the type of its identifier (Integer).
+ * entity (Place) and the type of its identifier (Long).
  */
-public interface IPlaceRepository extends JpaRepository<Place, Integer> { }
+public interface IPlaceRepository extends JpaRepository<Place, Long> { }

@@ -22,6 +22,6 @@ public interface IPlaceMapper extends IEntityMapper<PlaceDTO, Place> {
      * @param place the Place entity to convert
      * @return the converted PlaceDTO
      */
-    @Mapping(target = "placeId", source = "place.placeId")
+    @Mapping(target = "personId", source = "person.personId")
     PlaceDTO toDTO(Place place);
 }

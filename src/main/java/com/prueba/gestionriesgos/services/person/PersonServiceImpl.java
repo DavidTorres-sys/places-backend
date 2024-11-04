@@ -4,7 +4,6 @@ import com.prueba.gestionriesgos.domain.dto.PersonDTO;
 import com.prueba.gestionriesgos.domain.entity.Person;
 import com.prueba.gestionriesgos.domain.mapper.IPersonMapper;
 import com.prueba.gestionriesgos.persistance.IPersonRepository;
-import com.prueba.gestionriesgos.utils.exception.BusinessException;
 import com.prueba.gestionriesgos.utils.exception.DataBaseException;
 import com.prueba.gestionriesgos.utils.exception.DataDuplicatedException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +46,9 @@ public class PersonServiceImpl implements IPersonService {
         try {
             person = personRepository.save(person);
         } catch (DataIntegrityViolationException e) {
-            throw new DataBaseException("Error while creating the register", "error.person.duplicate");
+            throw new DataDuplicatedException("Person already exists");
+        } catch (Exception e) {
+            throw new DataBaseException("Error creating person");
         }
         return personMapper.toDTO(person);
     }

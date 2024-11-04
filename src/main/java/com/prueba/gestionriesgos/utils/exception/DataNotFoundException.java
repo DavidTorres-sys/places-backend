@@ -10,7 +10,7 @@ public class DataNotFoundException extends GeneralRuntimeException{
     @Serial
     private static final long serialVersionUID = 1L;
 
-    public DataNotFoundException(String message, Throwable throwable) {
+    public DataNotFoundException(String message) {
         super(message);
     }
 }
